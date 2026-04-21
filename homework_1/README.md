@@ -1,6 +1,6 @@
-To run the code, install the packages and read the CSV file in the first cell.
-Then, initialize the functions by running the cell titled (functions).
-Lastly, the cells under the analysis section can be run sequentially, descending by task. 
+To run the code, install the packages and read the CSV file in the first cell. \
+Then, initialize the functions by running the cell titled (functions). \
+Lastly, the cells under the analysis section can be run sequentially, descending by task. \
   Task 3 outputs 
       43428 rows removed
       88885 rows remaining
