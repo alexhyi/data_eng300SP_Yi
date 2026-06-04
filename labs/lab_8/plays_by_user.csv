@@ -1,0 +1,7 @@
+user_id,played_at,song_id,artist,device,title
+u3,2026-05-01 12:00:00.000+0000,s1,Taylor Swift,laptop,Anti-Hero
+u2,2026-05-01 11:15:00.000+0000,s4,Olivia Rodrigo,tablet,drivers license
+u2,2026-05-01 11:00:00.000+0000,s1,Taylor Swift,android,Anti-Hero
+u1,2026-05-01 10:10:00.000+0000,s3,Billie Eilish,laptop,bad guy
+u1,2026-05-01 10:05:00.000+0000,s2,The Weeknd,iphone,Blinding Lights
+u1,2026-05-01 10:00:00.000+0000,s1,Taylor Swift,iphone,Anti-Hero
