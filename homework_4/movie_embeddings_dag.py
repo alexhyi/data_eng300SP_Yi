@@ -1,13 +1,3 @@
-"""
-DAG 1: Offline movie embeddings (run ONCE).
-
-Reads movies.dat (MovieLens 1M) from S3, generates BERT embeddings for every
-movie using its title + genres, and writes the result to S3 as an intermediate
-artifact. Schedule is None -> you trigger it manually a single time.
-
-The task is idempotent: if the embeddings file already exists in S3 it skips
-the expensive BERT step, so re-triggering is safe and satisfies "only once".
-"""
 import io
 import logging
 import pendulum
@@ -16,9 +6,9 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 BUCKET = "de300-airflow-yi-barnett"
-RAW_PREFIX = "ml-1m"                    # where movies.dat / ratings.dat live in S3
+RAW_PREFIX = "ml-1m"             
 EMB_KEY = "embeddings/movie_embeddings.parquet"
-MODEL_NAME = "all-MiniLM-L6-v2"        # small, fast sentence-transformers model
+MODEL_NAME = "all-MiniLM-L6-v2"   
 
 log = logging.getLogger(__name__)
 
@@ -47,7 +37,6 @@ def generate_movie_embeddings(**_):
         log.info("Embeddings already exist at s3://%s/%s -- skipping.", BUCKET, EMB_KEY)
         return
 
-    # movies.dat: MovieID::Title::Genres  (latin-1 encoded, :: separated)
     obj = client.get_object(Bucket=BUCKET, Key=f"{RAW_PREFIX}/movies.dat")
     movies = pd.read_csv(
         io.BytesIO(obj["Body"].read()),
@@ -55,7 +44,6 @@ def generate_movie_embeddings(**_):
         names=["MovieID", "Title", "Genres"],
     )
 
-    # Build the text BERT will embed
     movies["text"] = movies["Title"] + " | " + movies["Genres"].str.replace("|", " ", regex=False)
 
     model = SentenceTransformer(MODEL_NAME)
