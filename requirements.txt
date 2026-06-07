@@ -1,0 +1,7 @@
+pandas
+numpy
+scikit-learn
+pyarrow
+boto3
+sentence-transformers==2.7.0
+torch==2.2.2

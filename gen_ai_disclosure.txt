@@ -1,0 +1,8 @@
+I used claude to help debug the dags and evironment.
+Prompts such as:
+- "Why can I not access my requirements.txt file in the dag log?"
+- "I got an error saying that pyarrow was missing, how can I fix that?"
+- "I don't have 48 hours to wait, how can I change my logic so I can just run the dag multiple times to get different time periods?"
+were used. 
+
+I was able to verify the results by going into the outputs and making sure they made sense both in file name/path and output. 

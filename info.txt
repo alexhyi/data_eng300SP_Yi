@@ -1,0 +1,3 @@
+Team members: Alex Yi, Evan Barnett
+s3 Bucket: de300-airflow-yi-barnett
+MWAA Env: de300-yi-barnett-env
